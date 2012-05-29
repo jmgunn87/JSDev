@@ -1,6 +1,6 @@
 /*  jsdev.c
     Douglas Crockford
-    2012-01-06
+    2012-03-29
 
     Public Domain
 
@@ -474,7 +474,7 @@ process()
                             }
                             if (c == '/') {
                                 c = get(TRUE);
-                                if (c == '*' || c == '/') {
+                                if (c == '*') {
                                     error("nested comment.");
                                 }
                             } else if (c == '*') {

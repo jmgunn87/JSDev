@@ -1,6 +1,6 @@
 // jsdev.js
 // Douglas Crockford
-// 2012-01-08
+// 2012-03-28
 //
 // Public Domain
 //
@@ -410,7 +410,7 @@ function JSDEV(source, tags, comments) {
                                 }
                                 if (c === '/') {
                                     c = get(true);
-                                    if (c === '*' || c === '/') {
+                                    if (c === '*') {
                                         error("nested comment.");
                                     }
                                 } else if (c === '*') {
