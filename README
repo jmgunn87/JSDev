@@ -33,7 +33,7 @@ as
         console.log("*\/ test");
     */
 
-JSDev is given a list the names of the tags that should be activated.
+JSDev is given a list of the names of the tags that should be activated.
 Also, methods can be defined by following the tag name with : and a method
 name. There can be no spaces around the :.
 
