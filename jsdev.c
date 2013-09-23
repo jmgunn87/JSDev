@@ -1,6 +1,6 @@
 /*  jsdev.c
     Douglas Crockford
-    2012-03-29
+    2013-09-22
 
     Public Domain
 
@@ -191,9 +191,10 @@ get(int echo)
     }
     if (c <= 0) {
         return EOF;
-    } else if (c == '\r') {
-        cr = TRUE;
+    }
+    if (c == '\r') {
         line_nr += 1;
+        cr = TRUE;
     } else {
         if (c == '\n' && !cr) {
             line_nr += 1;
@@ -269,13 +270,13 @@ regexp(int in_comment)
                     error("unterminated set in Regular Expression literal.");
                 }
             }
+        } else if (c == '\\') {
+            c = get(TRUE);
         } else if (c == '/') {
             if (in_comment && (peek() == '/' || peek() == '*')) {
                 error("unexpected comment.");
             }
             return;
-        } else if (c == '\\') {
-            c = get(TRUE);
         }
         if (in_comment && c == '*' && peek() == '/') {
             error("unexpected comment.");

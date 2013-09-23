@@ -1,6 +1,6 @@
 // jsdev.js
 // Douglas Crockford
-// 2012-03-28
+// 2013-09-22
 //
 // Public Domain
 //
@@ -230,13 +230,13 @@ function JSDEV(source, tags, comments) {
                         error("unterminated set in Regular Expression literal.");
                     }
                 }
+            } else if (c === '\\') {
+                c = get(true);
             } else if (c === '/') {
                 if (in_comment && (peek() === '/' || peek() === '*')) {
                     error("unexpected comment.");
                 }
                 return;
-            } else if (c === '\\') {
-                c = get(true);
             }
             if (in_comment && c === '*' && peek() === '/') {
                 error("unexpected comment.");
@@ -354,7 +354,8 @@ function JSDEV(source, tags, comments) {
         for (;;) {
             if (c === null) {
                 break;
-            } else if (c === '\'' || c === '"' || c === '`') {
+            }
+            if (c === '\'' || c === '"' || c === '`') {
                 emit(c);
                 string(c, false);
                 c = 0;
